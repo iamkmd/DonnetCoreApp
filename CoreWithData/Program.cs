@@ -1,4 +1,19 @@
-var builder = WebApplication.CreateBuilder(args);
+
+//step1 create first the Instance of WebApplicationOptions Class
+
+
+WebApplicationOptions option = new WebApplicationOptions()
+{
+    WebRootPath = "MyWebRoot",
+    Args = args,
+    EnvironmentName = "Production"
+
+};
+
+//step 2 pass the webApplicationOptions Instance to CreateBuilder Method of
+//WebApplication Class to create the Instance of WebApplicationBuilder Class
+
+var builder = WebApplication.CreateBuilder(option);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
