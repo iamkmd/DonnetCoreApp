@@ -6,9 +6,9 @@ builder.Services.AddControllersWithViews();
 var app = builder.Build();
 app.MapGet("/", () =>
 
-    $"EnvironmentName: {app.Environment.EnvironmentName}," +
-    $"ApplicationName: {app.Environment.ApplicationName}," +
-    $"WebRootPath: {app.Environment.WebRootPath}," +
+    $"EnvironmentName: {app.Environment.EnvironmentName}," + " " +
+    $"ApplicationName: {app.Environment.ApplicationName}," + " " +
+     $"WebRootPath: {app.Environment.WebRootPath}," + " " +
     $"ContentRootPath: {app.Environment.ContentRootPath}");
 
 // Configure the HTTP request pipeline.
@@ -25,6 +25,7 @@ if (!app.Environment.IsDevelopment())
 //app.UseAuthorization();
 
 //app.MapStaticAssets();
+
 
 //app.MapControllerRoute(
 //    name: "default",
