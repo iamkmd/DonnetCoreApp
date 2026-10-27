@@ -23,7 +23,7 @@ app.MapGet("/", () =>
 
     $"EnvironmentName: {app.Environment.EnvironmentName}," + " " +
     $"ApplicationName: {app.Environment.ApplicationName}," + " " +
-     $"WebRootPath: {app.Environment.WebRootPath}," + " " +
+    $"WebRootPath: {app.Environment.WebRootPath}," + " " +
     $"ContentRootPath: {app.Environment.ContentRootPath}");
 
 // Configure the HTTP request pipeline.

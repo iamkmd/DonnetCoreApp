@@ -1,0 +1,79 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model IEnumerable<EmpApplication.Models.Employee>
+@{
+
+    ViewData["Title"] = "Index";
+
+}
+
+<h2>Index</h2>
+
+<p>
+
+    <a asp-action="Create">Create New</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.EID)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Ename)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.DeptId)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Salary)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.DOJ)
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+       @foreach(var e in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(item => e.EID)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(item => e.Ename)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(item => e.DeptId)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(item => e.Salary)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(item => e.DOJ)
+                    </td>
+
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@e.EID">Edit</a>
+                        <a asp-action="Details" asp-route-id="@e.EID">Details</a>
+                        <a asp-action="Delete" asp-route-id="@e.EID">Delete</a>
+                    </td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</p>
