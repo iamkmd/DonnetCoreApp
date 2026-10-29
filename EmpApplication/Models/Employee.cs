@@ -16,6 +16,7 @@ namespace EmpApplication.Models
        public Decimal Salary { get; set; }
 
         [Required (ErrorMessage ="Date Of Joining is Required")]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
         public DateTime DOJ { get; set; }
     }
 }

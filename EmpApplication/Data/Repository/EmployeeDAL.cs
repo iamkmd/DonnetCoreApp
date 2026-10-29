@@ -59,7 +59,7 @@ namespace EmpApplication.Data.Repository
             using(SqlCommand cmd = new SqlCommand("spGetEmployeeById", con))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@EId", id);
+                cmd.Parameters.AddWithValue("@EmpID", id);
                 con.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
 
@@ -69,9 +69,9 @@ namespace EmpApplication.Data.Repository
                         {
                             EID = reader.GetInt32(0),
                             Ename = reader.GetString(1),
-                            DeptId = reader.GetInt32(3),
-                            Salary = reader.GetDecimal(4),
-                            DOJ = reader.GetDateTime(5).Date
+                            DeptId = reader.GetInt32(2),
+                            Salary = reader.GetDecimal(3),
+                            DOJ = reader.GetDateTime(4).Date
                         };
 
                     return emp;
@@ -106,16 +106,17 @@ namespace EmpApplication.Data.Repository
 
         }
 
-        public void UpdateEmp(Employee e)
+        public void UpdateEmp(Employee e, int id)
         {
             SqlConnection con = new SqlConnection(connectionString);
             using (SqlCommand cmd = new SqlCommand("spUpdateEmployee", con))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Ename", e.Ename);
-                cmd.Parameters.AddWithValue("@DeptId", e.DeptId);
-                cmd.Parameters.AddWithValue("@Salary", e.Salary);
-                cmd.Parameters.AddWithValue("@DOJ", e.DOJ);
+                cmd.Parameters.AddWithValue("@EmployeeId", id);
+                cmd.Parameters.AddWithValue("@EmpName", e.Ename);
+                cmd.Parameters.AddWithValue("@Deptid", e.DeptId);
+                cmd.Parameters.AddWithValue("@EmpSalary", e.Salary);
+                cmd.Parameters.AddWithValue("@DateOfJoining", e.DOJ);
 
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -128,7 +129,7 @@ namespace EmpApplication.Data.Repository
             using(SqlCommand cmd = new SqlCommand("spDeleteEmployee" , con))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@EId", id);
+                cmd.Parameters.AddWithValue("@EmployeeId", id);
                 con.Open();
                 cmd.ExecuteNonQuery();
             }

@@ -1,4 +1,4 @@
-﻿using EmpApplication.Data.Repository;
+﻿ using EmpApplication.Data.Repository;
 using EmpApplication.Models;
 
 namespace EmpApplication.BusinessLogic
@@ -6,21 +6,21 @@ namespace EmpApplication.BusinessLogic
     public class EmpBL
     {
         //Dependency Injection Of EmployeeDAL class
-        private readonly EmployeeDAL employeeDAL;
+        private readonly IEmployeeDAL _employeeDAL;
 
         public EmpBL(EmployeeDAL employeeDAL)
         {
-            this.employeeDAL = employeeDAL;
+            _employeeDAL = employeeDAL;
         }
 
         public List<Employee> getEmployees()
         {
-            return employeeDAL.GetAllEmployees().ToList();
+            return _employeeDAL.GetAllEmployees().ToList();
         }
 
         public Employee ? getEmpById(int id)
         {
-            return id > 0 ? employeeDAL.GetById(id) : null;
+            return id > 0 ? _employeeDAL.GetById(id) : null;
            
         }
 
@@ -28,15 +28,15 @@ namespace EmpApplication.BusinessLogic
         {
             if(e != null)
             {
-                employeeDAL.CreateEmp(e);
+                _employeeDAL.CreateEmp(e);
             }
         }
 
-        public void updateEmp(Employee e)
+        public void updateEmp(Employee e , int id)
         {
             if (e != null)
             {
-                employeeDAL.UpdateEmp(e);
+                _employeeDAL.UpdateEmp(e , id);
             }
 
         }
@@ -45,7 +45,7 @@ namespace EmpApplication.BusinessLogic
         {
             if(id > 0)
             {
-                employeeDAL.DeleteEmp(id);
+                _employeeDAL.DeleteEmp(id);
             }
         }
         

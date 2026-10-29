@@ -8,8 +8,11 @@ namespace EmpApplication.Data.Repository
         Employee? GetById(int id);
 
         void CreateEmp(Employee e);
-        void UpdateEmp(Employee e);
+        void UpdateEmp(Employee e, int id);
         void DeleteEmp(int id);
+
+
+
 
 
     }

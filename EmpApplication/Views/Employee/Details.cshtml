@@ -1,5 +1,54 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@model EmpApplication.Models.Employee
 @{
+    ViewData["Title"] = "Details";
 }
+
+<h2>Details</h2>
+
+
+
+<div>
+    <h4>Employees</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ename)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeptId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeptId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOJ)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOJ)
+        </dd>
+    </dl>  
+
+
+<a asp-action="Edit" asp-route-id="@Model.EID">Edit</a>
+<a asp-action="Index">Back to list</a>
+</div>
+

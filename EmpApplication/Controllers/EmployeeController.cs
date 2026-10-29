@@ -8,7 +8,7 @@ namespace EmpApplication.Controllers
     {
 
         //Depedency Injection through Construction 
-        //Dependency Injection of EMployeeBusiness Layer
+        //Dependency Injection of EmployeeBusiness Layer
         private readonly EmpBL empBusinessLayer;
 
         public EmployeeController(EmpBL empBL)
@@ -85,7 +85,7 @@ namespace EmpApplication.Controllers
             }
             if(ModelState.IsValid)
             {
-                empBusinessLayer.updateEmp(emp);
+                empBusinessLayer.updateEmp(emp , id);
                 return RedirectToAction(nameof(Index));
 
             }
@@ -111,6 +111,7 @@ namespace EmpApplication.Controllers
            
         }
 
+        [HttpPost, ActionName("Delete")]
         public IActionResult DeleteConfirmed(int id)
         {
             empBusinessLayer.removeEmp(id);
